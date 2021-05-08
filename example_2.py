@@ -12,7 +12,7 @@ def load_data():
     '''
     Загрузка данных
     '''
-    data = pd.read_csv('data/occupancy_datatraining.txt', sep=",")
+    data = pd.read_csv('data/occupancy_datatraining.txt', sep=",", nrows=500)
     return data
 
 
@@ -73,7 +73,7 @@ if st.checkbox('Показать корреляционную матрицу'):
     sns.heatmap(data.corr(), annot=True, fmt='.2f')
     st.pyplot(fig1)
 
-cv_slider = st.slider('Количество фолдов:', min_value=3, max_value=20, value=5, step=1)
+cv_slider = st.slider('Количество фолдов:', min_value=3, max_value=10, value=5, step=1)
 
 #Вычислим количество возможных ближайших соседей
 rows_in_one_fold = int(data_len / cv_slider)

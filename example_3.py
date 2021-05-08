@@ -13,7 +13,7 @@ def load_data():
     '''
     Загрузка данных
     '''
-    data = pd.read_csv('data/occupancy_datatraining.txt', sep=",")
+    data = pd.read_csv('data/occupancy_datatraining.txt', sep=",", nrows=500)
     return data
 
 
@@ -37,8 +37,8 @@ def preprocess_data(data_in):
 
 st.sidebar.header('Метод ближайших соседей')
 data = load_data()
-cv_slider = st.sidebar.slider('Количество фолдов:', min_value=3, max_value=20, value=3, step=1)
-step_slider = st.sidebar.slider('Шаг для соседей:', min_value=1, max_value=500, value=500, step=1)
+cv_slider = st.sidebar.slider('Количество фолдов:', min_value=3, max_value=10, value=3, step=1)
+step_slider = st.sidebar.slider('Шаг для соседей:', min_value=1, max_value=50, value=10, step=1)
 
 if st.checkbox('Показать корреляционную матрицу'):
     fig1, ax = plt.subplots(figsize=(10,5))
